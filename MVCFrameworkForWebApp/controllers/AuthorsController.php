@@ -5,6 +5,7 @@ class AuthorsController extends BaseController{
     private $db;
     
     public function onInit(){
+       // parent::__construct($controllerName, $action);
         $this->title = "Authors";
         $this->db = new AuthorsModel();
     }
@@ -12,6 +13,7 @@ class AuthorsController extends BaseController{
     public function index(){
         //$model = new AuthorsModel();
         $this->authors = $this->db->getAll();
+        $this->renderView();
        // $this->authors = array(
        //     array('id'=> 1 ,'name'=> "Ivan"),
        //     array('id'=> 2 ,'name'=> "Pesho"),

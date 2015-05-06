@@ -25,11 +25,11 @@ abstract class BaseController {
        //TODO - implement the default action 
     }
     
-    public function renderView($viewName = null, $includeLayout = true){
+    public function renderView($viewName = "index", $includeLayout = true){
         if(!$this->isViewRendered){
-            if($viewName == null){
-            $viewName = $this->action;
-        }
+            //if($viewName == null){
+           // $viewName = $this->action;
+           //  }
         $viewFileName = 'views/' . $this->controller . '/' . $viewName . '.php';
         
         if($includeLayout){
