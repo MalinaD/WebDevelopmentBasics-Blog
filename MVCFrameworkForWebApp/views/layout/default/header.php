@@ -22,6 +22,7 @@
             </ul>
         </header>
 
+        <?php include('messages.php'); ?>
     </body>
     
 </html>
