@@ -7,7 +7,6 @@ abstract class BaseController {
     protected $layoutName = DEFAULT_LAYOUT;
     protected $isViewRendered = false;
     protected $isPost = false;
-    protected $user;
     protected $isLoggedIn;
     
     function __construct($controllerName,$action) {
@@ -15,6 +14,10 @@ abstract class BaseController {
         $this->controller = $controllerName;
         if($_SERVER['REQUEST_METHOD']=== 'POST'){
             $this->isPost = true;
+        }
+        
+        if(isset($_SESSION['username'])){
+            $this->isLoggedIn = true;
         }
         $this->onInit();
     }

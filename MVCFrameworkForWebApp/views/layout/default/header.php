@@ -20,11 +20,12 @@
                 <li><a href="/books">Books</a></li>
                 
             </ul>
-            
-            <div id="logged-in-info">
-                <span>Hello, username</span>
-                <form action="/account/logout"><input type="submit" value="Logout" /></form>
-            </div>
+            <?php if($this->isLoggedIn): ?>
+                <div id="logged-in-info">
+                    <span>Hello, <?php echo $_SESSION['username']; ?> </span>
+                    <form action="/account/logout"><input type="submit" value="Logout" /></form>
+                </div>
+            <?php endif; ?>
         </header>
 
         <?php include('messages.php'); ?>
