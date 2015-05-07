@@ -11,12 +11,13 @@ class AccountController extends BaseController{
 
       if($this->isPost){
           $username = $_POST['username'];
+          $password = $_POST['password'];
+                    
           if($username == null || strlen($username) < 3){
-              $this->addErrorMessage("This username is invalid");
+              $this->addErrorMessage("The username is invalid, must be at least 3 symbols long!");
               $this->redirect("account", "register");
           }
-          $password = $_POST['password'];
-          
+
           $isRegistered = $this->db->register($username, $password);
           
           if($isRegistered){
@@ -29,28 +30,38 @@ class AccountController extends BaseController{
           }
       }  
     
-    $this->renderView(__FUNCTION__);
+      $this->renderView(__FUNCTION__);
+    
     }
     
     public function login(){
         if($this->isPost){
             $username = $_POST['username'];
             $password = $_POST['password'];
+            
+          if($username == null || strlen($username) < 3){
+              $this->addErrorMessage("The username is invalid, must be at least 3 symbols long!");
+              $this->redirect('account', 'register');
+          }
+            
             $isLoggedIn = $this->db->login($username, $password);
             
-            if($isLoggedIn){
+            if(isset($isLoggedIn) && $isLoggedIn == TRUE){
                  $_SESSION['username'] =$username;
                 $this->addInfoMessage("Successfull login!");
-                $this->redirect("books", "index");
+                $this->redirect('books', 'index');
             }
             else{
                 $this->addErrorMessage("Failed to log in");
+                $this->redirect('account', 'login');
             }
         }
         $this->renderView(__FUNCTION__);
     }
         
     public function logout(){
-        session_destroy();
+        unset($_SESSION['username']);
+        $this->addInfoMessage("Logout successful!");
+        $this->redirect("books", "index");
     }
 }

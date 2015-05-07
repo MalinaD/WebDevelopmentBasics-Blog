@@ -19,6 +19,7 @@ abstract class BaseController {
         if(isset($_SESSION['username'])){
             $this->isLoggedIn = true;
         }
+        
         $this->onInit();
     }
     
@@ -27,7 +28,7 @@ abstract class BaseController {
     }
     
     public function index(){
-       //TODO - implement the default action 
+        $this->renderView();
     }
     
     public function renderView($viewName = "index", $includeLayout = true){
@@ -59,7 +60,7 @@ abstract class BaseController {
         die;
     }
     
-    public function redirect($controllerName, $actionName = "index", $params = null){
+    public function redirect($controllerName, $actionName = DEFAULT_ACTION, $params = null){
         $url = '/' . urlencode($controllerName);
         if($actionName != null){
             $url.= '/' . urlencode($actionName);
@@ -72,18 +73,19 @@ abstract class BaseController {
         $this->redirectToUrl($url);
     }
     
-   public function addMessage($msg, $msgText){
-       if(!isset($_SESSION[$msg])){
-            $_SESSION[$msg] = [];
+   public function addMessage($msgSessionKey, $msgText){
+       if(!isset($_SESSION[$msgSessionKey])){
+            $_SESSION[$msgSessionKey] = [];
         }
-         array_push($_SESSION[$msg], $msgText);
+         array_push($_SESSION[$msgSessionKey], $msgText);
     }
     
-    public function addInfoMessage($msg){
-        $this->addMessage($msg, INFO_MESSAGES_SESSION_KEY);
+    public function addInfoMessage($infoMsg){
+        $this->addMessage(INFO_MESSAGES_SESSION_KEY, $infoMsg);
     }
     
-    public function addErrorMessage($msg){
-       $this->addMessage($msg, ERROR_MESSAGES_SESSION_KEY); 
+    public function addErrorMessage($errorMsg){
+       $this->addMessage(ERROR_MESSAGES_SESSION_KEY, $errorMsg); 
     }
+
 }

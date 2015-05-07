@@ -25,7 +25,7 @@
                     <span>Hello, <?php echo $_SESSION['username']; ?> </span>
                     <form action="/account/logout"><input type="submit" value="Logout" /></form>
                 </div>
-            <?php endif; ?>
+            <?php endif ?>
         </header>
 
         <?php include('messages.php'); ?>
