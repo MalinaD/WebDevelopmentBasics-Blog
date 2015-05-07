@@ -2,14 +2,14 @@
 
 abstract class BaseController {
     
-    protected $action;
+    //protected $action;
     protected $controllerName;
     protected $layoutName = DEFAULT_LAYOUT;
     protected $isViewRendered = false;
     protected $isPost = false;
     
     function __construct($controllerName,$action) {
-        $this->action = $action;
+        //$this->action = $action;
         $this->controller = $controllerName;
         if($_SERVER['REQUEST_METHOD']=== 'POST'){
             $this->isPost = true;

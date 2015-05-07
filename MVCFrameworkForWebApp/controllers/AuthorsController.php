@@ -5,7 +5,6 @@ class AuthorsController extends BaseController{
     private $db;
     
     public function onInit(){
-       // parent::__construct($controllerName, $action);
         $this->title = "Authors";
         $this->db = new AuthorsModel();
     }

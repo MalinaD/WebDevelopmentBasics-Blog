@@ -7,6 +7,6 @@ class BooksController extends BaseController{
     }
     
     public function index(){
-        //TODO
+         $this->renderView();
     }
 }
