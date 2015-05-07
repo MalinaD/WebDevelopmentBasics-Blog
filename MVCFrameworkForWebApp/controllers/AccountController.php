@@ -11,11 +11,16 @@ class AccountController extends BaseController{
 
       if($this->isPost){
           $username = $_POST['username'];
+          if($username == null || strlen($username) < 3){
+              $this->addErrorMessage("This username is invalid");
+              $this->redirect("account", "register");
+          }
           $password = $_POST['password'];
           
           $isRegistered = $this->db->register($username, $password);
           
           if($isRegistered){
+              $this->addInfoMessage("Successfull registration!");
               $this->redirect("books", "index");
           }
           else{
@@ -27,7 +32,20 @@ class AccountController extends BaseController{
     }
     
     public function login(){
-        
+        if($this->isPost){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $isLoggedIn = $this->db->login($username, $password);
+            
+            if($isLoggedIn){
+                $this->addInfoMessage("Successfull login!");
+                $this->redirect("books", "index");
+            }
+            else{
+                $this->addErrorMessage("Failed to log in");
+            }
+        }
+        $this->renderView(__FUNCTION__);
     }
         
     public function logout(){

@@ -7,6 +7,8 @@ abstract class BaseController {
     protected $layoutName = DEFAULT_LAYOUT;
     protected $isViewRendered = false;
     protected $isPost = false;
+    protected $user;
+    protected $isLoggedIn;
     
     function __construct($controllerName,$action) {
         //$this->action = $action;
@@ -67,18 +69,18 @@ abstract class BaseController {
         $this->redirectToUrl($url);
     }
     
-   public function addMessage($msg, $type){
-       if(!isset($_SESSION['messages'])){
-            $_SESSION['messages'] = array();
+   public function addMessage($msg, $msgText){
+       if(!isset($_SESSION[$msg])){
+            $_SESSION[$msg] = [];
         }
-         array_push($_SESSION[$msg], $type);
+         array_push($_SESSION[$msg], $msgText);
     }
     
     public function addInfoMessage($msg){
-        $this->addMessage(INFO_MESSAGES_SESSION_KEY, $msg);
+        $this->addMessage($msg, INFO_MESSAGES_SESSION_KEY);
     }
     
     public function addErrorMessage($msg){
-       $this->addMessage(ERROR_MESSAGES_SESSION_KEY, $msg); 
+       $this->addMessage($msg, ERROR_MESSAGES_SESSION_KEY); 
     }
 }

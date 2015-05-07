@@ -9,5 +9,5 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'mvc');
 
-define('INFO_MESSAGES_SESSION_KEY', 'infoMessages');
-define('ERROR_MESSAGES_SESSION_KEY', 'errorMessages');
+define('INFO_MESSAGES_SESSION_KEY', 'info');
+define('ERROR_MESSAGES_SESSION_KEY', 'error');
