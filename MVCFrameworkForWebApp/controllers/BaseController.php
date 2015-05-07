@@ -54,7 +54,7 @@ abstract class BaseController {
         die;
     }
     
-    public function redirect($controllerName, $actionName = null, $params = null){
+    public function redirect($controllerName, $actionName = "index", $params = null){
         $url = '/' . urlencode($controllerName);
         if($actionName != null){
             $url.= '/' . urlencode($actionName);
@@ -69,7 +69,7 @@ abstract class BaseController {
     
    public function addMessage($msg, $type){
        if(!isset($_SESSION['messages'])){
-            $_SESSION['messages'] = [];
+            $_SESSION['messages'] = array();
         }
          array_push($_SESSION[$msg], $type);
     }
