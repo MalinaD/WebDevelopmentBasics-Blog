@@ -8,8 +8,12 @@ class PostsController extends BaseController{
         $this->db = new PostsModel();
     }
     
-    public function index(){
+    public function index($page, $pageSize){
+        
          $this->authoorize();
+         
+         $this->posts = $this->db->getAll();
+         
          $this->renderView();
     }
     

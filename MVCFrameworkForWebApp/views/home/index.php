@@ -14,6 +14,6 @@
             method: 'GET'
         }).success(function(data){
             $('#posts').html(data);
-        })
+        });
     })();
 </script>
