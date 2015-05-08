@@ -29,7 +29,7 @@ class AuthorsController extends BaseController{
                 $this->addErrorMessage("Cannot create author.");
                
             }
-            $this->redirect("authors");
+            $this->redirect('authors');
         }
         $this->renderView(__FUNCTION__);
     }

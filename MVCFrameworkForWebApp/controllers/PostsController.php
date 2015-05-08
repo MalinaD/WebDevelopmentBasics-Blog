@@ -14,6 +14,7 @@ class PostsController extends BaseController{
     }
     
     public function showPosts(){
-        
+        $this->posts = $this->db->getAll();
+        $this->renderView(__FUNCTION__, false);
     }
 }

@@ -1,4 +1,4 @@
-<h1> Books </h1>
+<h1> Posts </h1>
 
 <header>
     
@@ -6,7 +6,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/authors">Authors</a></li>
-                <li><a href="/books">Books</a></li>
+                <li><a href="/posts">Posts</a></li>
                 
             </ul>
         </header>

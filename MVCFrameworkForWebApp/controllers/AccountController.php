@@ -15,7 +15,7 @@ class AccountController extends BaseController{
                     
           if($username == null || strlen($username) < 3){
               $this->addErrorMessage("The username is invalid, must be at least 3 symbols long!");
-              $this->redirect("account", "register");
+              $this->redirect('account', 'register');
           }
 
           $isRegistered = $this->db->register($username, $password);
@@ -23,7 +23,7 @@ class AccountController extends BaseController{
           if($isRegistered){
               $_SESSION['username'] =$username;
               $this->addInfoMessage("Successfull registration!");
-              $this->redirect("books", "index");
+              $this->redirect('posts', 'index');
           }
           else{
               $this->addErrorMessage("Register failed!");
@@ -49,7 +49,7 @@ class AccountController extends BaseController{
             if(isset($isLoggedIn) && $isLoggedIn == TRUE){
                  $_SESSION['username'] =$username;
                 $this->addInfoMessage("Successfull login!");
-                return $this->redirect('books', 'index');
+                return $this->redirect('posts', 'index');
             }
             else{
                 $this->addErrorMessage("Failed to login");

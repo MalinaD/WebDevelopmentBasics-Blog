@@ -3,6 +3,8 @@
 class PostsModel extends BaseModel{
     
     public function getAll(){
-        self::$db->prepare("SELECT title FROM posts");
+        $statement = self::$db->query("SELECT title FROM posts");
+        $result = $statement->fetch_all();
+        return $result;
     }
 }
