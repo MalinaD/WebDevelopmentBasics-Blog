@@ -17,7 +17,9 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/authors">Authors</a></li>
-                <li><a href="/books">Books</a></li>
+                <?php if($this->isLoggedIn) : ?>
+                    <li><a href="/books">Books</a></li>
+                <?php  endif; ?>
                 
             </ul>
             <?php if($this->isLoggedIn): ?>
@@ -28,6 +30,8 @@
             <?php endif ?>
         </header>
 
+        <?php echo $this->isLoggedIn ?>
+        
         <?php include('messages.php'); ?>
     </body>
     

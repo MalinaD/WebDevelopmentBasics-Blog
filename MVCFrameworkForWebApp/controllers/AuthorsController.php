@@ -11,16 +11,14 @@ class AuthorsController extends BaseController{
     
     public function index(){
         //$model = new AuthorsModel();
+        $this->authoorize();
         $this->authors = $this->db->getAll();
         $this->renderView();
-       // $this->authors = array(
-       //     array('id'=> 1 ,'name'=> "Ivan"),
-       //     array('id'=> 2 ,'name'=> "Pesho"),
-       //     array('id'=> 3 ,'name'=> "Maria")
-       // );
+
     }
     
     public function create(){
+                $this->authoorize();
         if($this->isPost){
             $name = $_POST['author_name'];
             //$this->authors = $this->db->createAuthor($name);
@@ -37,6 +35,7 @@ class AuthorsController extends BaseController{
     }
     
     public function delete($id){
+                $this->authoorize();
         //$this->renderView("index");
        if($this->db->delete($id)){
            $this->addInfoMessage("Author deleted");

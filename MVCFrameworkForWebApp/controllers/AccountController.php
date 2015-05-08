@@ -49,19 +49,22 @@ class AccountController extends BaseController{
             if(isset($isLoggedIn) && $isLoggedIn == TRUE){
                  $_SESSION['username'] =$username;
                 $this->addInfoMessage("Successfull login!");
-                $this->redirect('books', 'index');
+                return $this->redirect('books', 'index');
             }
             else{
-                $this->addErrorMessage("Failed to log in");
+                $this->addErrorMessage("Failed to login");
                 $this->redirect('account', 'login');
+                //$this->renderView(__FUNCTION__);
+               // return;
             }
         }
         $this->renderView(__FUNCTION__);
     }
         
     public function logout(){
+        $this->authoorize();
         unset($_SESSION['username']);
         $this->addInfoMessage("Logout successful!");
-        $this->redirect("books", "index");
+        $this->redirectToUrl("/");
     }
 }

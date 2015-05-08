@@ -25,6 +25,7 @@ abstract class BaseController {
     
     public function onInit(){
         //TODO
+               
     }
     
     public function index(){
@@ -73,7 +74,15 @@ abstract class BaseController {
         $this->redirectToUrl($url);
     }
     
-   public function addMessage($msgSessionKey, $msgText){
+    public function authoorize(){
+        if(!$this->isLoggedIn){
+            $this->addErrorMessage("Please login first!");
+            $this->redirect("account" , "login");
+        }
+    }
+
+
+    public function addMessage($msgSessionKey, $msgText){
        if(!isset($_SESSION[$msgSessionKey])){
             $_SESSION[$msgSessionKey] = [];
         }
