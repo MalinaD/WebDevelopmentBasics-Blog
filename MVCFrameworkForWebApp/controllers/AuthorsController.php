@@ -43,7 +43,7 @@ class AuthorsController extends BaseController{
     }
     
     public function delete($id){
-                $this->authoorize();
+         $this->authoorize();
         //$this->renderView("index");
        if($this->db->delete($id)){
            $this->addInfoMessage("Author deleted");

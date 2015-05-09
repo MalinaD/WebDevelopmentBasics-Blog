@@ -2,9 +2,8 @@
     <h1>
     <?= htmlspecialchars($this->title) ?>
 </h1>
-Hello, I am the Author Index view.
 
-<table>
+<table class="table-striped">
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -19,5 +18,5 @@ Hello, I am the Author Index view.
     
 </table>
 
-<a href="/authors/create">[Create]</a>
+<a href="/authors/create">[Create author]</a>
 </div>

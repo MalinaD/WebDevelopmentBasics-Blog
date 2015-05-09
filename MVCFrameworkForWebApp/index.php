@@ -42,10 +42,6 @@
     }
     
     
-   // if(!eregi("^\\w+$", $controller)){
-   //     die("Invalid controller name");
-   // }
-    
     function __autoload($class_name) {
     if (file_exists("controllers/$class_name.php")) {
         include "controllers/$class_name.php";

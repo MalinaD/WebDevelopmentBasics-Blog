@@ -99,19 +99,18 @@ abstract class BaseController {
         return $this->formValues[$field];
     }
 
-    public function addMessage($msgSessionKey, $msgText){
-       if(!isset($_SESSION[$msgSessionKey])){
-            $_SESSION[$msgSessionKey] = [];
+    function addMessage($msg, $type) {
+        if (!isset($_SESSION['messages'])) {
+            $_SESSION['messages'] = array();
         }
-         array_push($_SESSION[$msgSessionKey], $msgText);
+        array_push($_SESSION['messages'],
+            array('text' => $msg, 'type' => $type));
     }
-    
-    public function addInfoMessage($infoMsg){
-        $this->addMessage(INFO_MESSAGES_SESSION_KEY, $infoMsg);
+    function addInfoMessage($msg) {
+        $this->addMessage($msg, 'info');
     }
-    
-    public function addErrorMessage($errorMsg){
-       $this->addMessage(ERROR_MESSAGES_SESSION_KEY, $errorMsg); 
+    function addErrorMessage($msg) {
+        $this->addMessage($msg, 'error');
     }
 
 }

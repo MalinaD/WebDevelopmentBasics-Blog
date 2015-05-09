@@ -31,7 +31,7 @@
             </ul>
             <?php if($this->isLoggedIn): ?>
                 <div class="logged-in-info nav navbar-nav navbar-right">
-                    <span class="glyphicon glyphicon-user">Hello, <?php echo $_SESSION['username']; ?> </span> 
+                    <span class="glyphicon glyphicon-user"> Hello, <?php echo $_SESSION['username']; ?> </span> 
                     <form action="/account/logout"><input type="submit" value="Logout" class="btn btn-primary btn-sm"/></form>
                 </div>
             <?php endif ?>
@@ -42,7 +42,9 @@
 
         <?php echo $this->isLoggedIn ?>
         
-        <?php include('messages.php'); ?>
+        <?php include_once('messages.php'); ?>
+        
+       <!-- <?php echo "You are visitor num=>". $counter[0]; ?> --> 
     </body>
     
 </html>

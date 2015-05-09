@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/WebDevelopmentBasics-Blog/MVCFrameworkForWebApp/views/posts/index.php</file>
+            <file>file:/C:/xampp/htdocs/WebDevelopmentBasics-Blog/MVCFrameworkForWebApp/views/posts/create.php</file>
+            <file>file:/C:/xampp/htdocs/WebDevelopmentBasics-Blog/MVCFrameworkForWebApp/controllers/PostsController.php</file>
+            <file>file:/C:/xampp/htdocs/WebDevelopmentBasics-Blog/MVCFrameworkForWebApp/views/authors/index.php</file>
+            <file>file:/C:/xampp/htdocs/WebDevelopmentBasics-Blog/MVCFrameworkForWebApp/views/authors/create.php</file>
+            <file>file:/C:/xampp/htdocs/WebDevelopmentBasics-Blog/MVCFrameworkForWebApp/models/PostsModel.php</file>
+            <file>file:/C:/xampp/htdocs/WebDevelopmentBasics-Blog/MVCFrameworkForWebApp/views/layout/default/header.php</file>
+            <file>file:/C:/xampp/htdocs/WebDevelopmentBasics-Blog/MVCFrameworkForWebApp/content/styles/style.css</file>
+        </group>
     </open-files>
 </project-private>
