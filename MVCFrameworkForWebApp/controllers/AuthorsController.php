@@ -18,10 +18,18 @@ class AuthorsController extends BaseController{
     }
     
     public function create(){
-                $this->authoorize();
+        $this->authoorize();
+        
         if($this->isPost){
             $name = $_POST['author_name'];
             //$this->authors = $this->db->createAuthor($name);
+            
+            if(strlen($name)< 3){
+                $this->addFieldValue('author_name', $name);
+                $this->addValidationError('author_name', 'The author name length should be greater than 2');
+                return $this->renderView(__FUNCTION__);
+            }
+            
             if ($this->db->createAuthor($name)) {
                 $this->addInfoMessage("Author created.");
                

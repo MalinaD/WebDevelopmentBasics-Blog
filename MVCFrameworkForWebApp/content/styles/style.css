@@ -27,10 +27,17 @@ li.error{
     background: #f77;
 }
 
-#logged-in-info{
+.logged-in-info{
     float: right;
 }
 
-#logged-in-info form{
+.logged-in-info form{
     display: inline-block;
+}
+
+#login-container, #register-container,#authors-container{
+  width: 700px ;
+  margin-left: auto ;
+  margin-right: auto ;
+  text-align: center;
 }

@@ -1,4 +1,5 @@
-<h1>
+<div id="authors-container">
+    <h1>
     <?= htmlspecialchars($this->title) ?>
 </h1>
 Hello, I am the Author Index view.
@@ -19,3 +20,4 @@ Hello, I am the Author Index view.
 </table>
 
 <a href="/authors/create">[Create]</a>
+</div>

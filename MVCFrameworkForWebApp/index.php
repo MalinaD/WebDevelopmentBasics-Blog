@@ -35,7 +35,7 @@
     if(method_exists($controller, $actionName)){
        // $controller->{$action}();
         call_user_func_array(array($controller, $actionName), $params);
-        $controller->renderView();
+        //$controller->renderView();
     }
     else{
         die("Cannot find action '$actionName' in controller '$controllerClassName'");

@@ -8,6 +8,8 @@ abstract class BaseController {
     protected $isViewRendered = false;
     protected $isPost = false;
     protected $isLoggedIn;
+    protected $validationErrors;
+    protected $formValues;
     
     function __construct($controllerName,$action) {
         //$this->action = $action;
@@ -81,6 +83,21 @@ abstract class BaseController {
         }
     }
 
+    public function addValidationError($field, $message) {
+        $this->validationErrors[$field] = $message;
+    }
+    
+    public function getValidationError($field) {
+        return $this->validationErrors[$field];
+    }
+    
+    public function addFieldValue($field, $value) {
+        $this->formValues[$field] = $value;
+    }
+    
+    public function getFieldValue($field) {
+        return $this->formValues[$field];
+    }
 
     public function addMessage($msgSessionKey, $msgText){
        if(!isset($_SESSION[$msgSessionKey])){

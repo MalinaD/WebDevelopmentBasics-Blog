@@ -46,10 +46,10 @@ class AccountController extends BaseController{
             
             $isLoggedIn = $this->db->login($username, $password);
             
-            if(isset($isLoggedIn) && $isLoggedIn == TRUE){
+            if(isset($isLoggedIn) && $isLoggedIn == FALSE){
                  $_SESSION['username'] =$username;
                 $this->addInfoMessage("Successfull login!");
-                return $this->redirect('posts', 'index');
+                return $this->redirect('home', 'index');
             }
             else{
                 $this->addErrorMessage("Failed to login");

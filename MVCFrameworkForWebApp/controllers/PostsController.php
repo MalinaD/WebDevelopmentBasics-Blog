@@ -8,13 +8,18 @@ class PostsController extends BaseController{
         $this->db = new PostsModel();
     }
     
-    public function index($page, $pageSize){
-        
+    public function index($page =0 , $pageSize = 5){
          $this->authoorize();
          
-         $this->posts = $this->db->getAll();
+         $from = $page * $pageSize;
+         $this->page = $page;
+         $this->pageSize = $pageSize;
+              
          
-         $this->renderView();
+         $this->posts = $this->db->getFilteredBooks($from, $pageSize);
+         $this->renderView(__FUNCTION__);
+
+
     }
     
     public function showPosts(){
