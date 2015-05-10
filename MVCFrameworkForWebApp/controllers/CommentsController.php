@@ -11,7 +11,7 @@ class CommentsController extends BaseController{
     public function index($id){
          $this->authoorize();
          $this->id = $id; 
-         $this->post = $this->postsModel->findCOmmentsByPostId($id);
+         $this->post = $this->postsModel->findCommentsByPostId($id);
          $this->comments = $this->db->getAllComments($id);
          $this->renderView(__FUNCTION__);
     }

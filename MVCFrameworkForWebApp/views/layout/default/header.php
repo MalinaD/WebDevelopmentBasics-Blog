@@ -47,5 +47,5 @@
        <!-- <?php echo "You are visitor num=>". $counter[0]; ?> --> 
     </body>
     
-</html>
+
 

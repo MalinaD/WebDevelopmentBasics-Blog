@@ -41,3 +41,7 @@ li.error{
   margin-right: auto ;
   text-align: center;
 }
+
+.newPost{
+    float: right;
+}

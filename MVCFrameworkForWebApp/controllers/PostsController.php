@@ -24,8 +24,8 @@ class PostsController extends BaseController{
         $this->authoorize();
          $this->id = $id; 
          
-         $this->post = $this->db->findCOmmentsByPostId($id);
-         $this->comments = $this->db->getAllCommentsByPostId($id);
+         $this->post = $this->db->getById($id);
+         $this->comments = $this->db->findCommentsByPostId($id);
          $this->renderView(__FUNCTION__);
     }
 
@@ -38,7 +38,7 @@ class PostsController extends BaseController{
         $this->authoorize();
         $this->id = $id;
         $this->post = $this->db->getById($id);
-        $this->comments = $this->db->getAllCommentsByPostId($id);
+        $this->comments = $this->db->findCommentsByPostId($id);
         $this->renderView(__FUNCTION__);
     }
     
@@ -79,7 +79,7 @@ class PostsController extends BaseController{
                 $this->addErrorMessage("Post cannot be deleted");
             }
             
-            $this->post = $this->db->findCOmmentsByPostId($id);
+            $this->post = $this->db->findCommentsByPostId($id);
             if(!$this->post){
                 $this->addErrorMessage("Invalid post");
                 $this->redirect("posts");

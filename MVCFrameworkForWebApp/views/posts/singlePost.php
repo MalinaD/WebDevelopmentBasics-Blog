@@ -13,8 +13,8 @@
             
             <br/><br/>
 
-            <a href="/posts/showComments/<?php $post[3] ?>" class="btn btn-default btn-sm active">Show comments</a>   
-
+            <a href="/posts/showComments/<?php $post['id'] ?>" class="btn btn-default btn-sm active">Show comments</a>   
+            <div class="comments-container"></div>
             
             <div class="col-xs-12 col-md-6 col-lg-6">
                 <form class="form-buttons" action="/posts/delete">

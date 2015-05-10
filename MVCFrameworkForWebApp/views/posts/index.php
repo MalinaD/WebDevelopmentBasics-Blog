@@ -1,7 +1,7 @@
 <div id="posts-container">
  <div class="col-xs-12 col-md-12 col-lg-12">
     <form action="/posts/create">
-        <button type="submit" class="btn-default">Create new post</button>
+        <button type="submit" class="submit-button btn btn-default btn-sm active newPost">Create new post</button>
     </form>
 </div>
     

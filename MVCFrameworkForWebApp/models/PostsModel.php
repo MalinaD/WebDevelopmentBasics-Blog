@@ -25,11 +25,17 @@ class PostsModel extends BaseModel{
         return $result;
     }
     
-       public function findCOmmentsByPostId($id) {
+       public function findCommentsByPostId($id) {
         $statement = self::$db->prepare("SELECT * FROM comments WHERE post_id = ? ");
         $statement->bind_param("i", $id);
         $statement->execute();
         return $statement->get_result();
+        
+        //while ($data = $result -> fetch_assoc())
+        //{
+        //    $statistic[] = $data;
+       // }
+        //return $statistic;
     }
     
      public function getById($id) {
