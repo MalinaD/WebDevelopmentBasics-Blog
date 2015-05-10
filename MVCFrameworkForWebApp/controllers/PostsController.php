@@ -9,7 +9,7 @@ class PostsController extends BaseController{
     }
     
     public function index($page =0 , $pageSize = 5){
-         $this->authoorize();
+         $this->authorize();
          
          $from = $page * $pageSize;
          $this->page = $page;
@@ -21,7 +21,7 @@ class PostsController extends BaseController{
     }
     
     public function showComments($id){
-        $this->authoorize();
+        $this->authorize();
          $this->id = $id; 
          
          $this->post = $this->db->getById($id);
@@ -35,7 +35,7 @@ class PostsController extends BaseController{
     }
     
     public function singlePost($id){
-        $this->authoorize();
+        $this->authorize();
         $this->id = $id;
         $this->post = $this->db->getById($id);
         $this->comments = $this->db->findCommentsByPostId($id);
@@ -44,7 +44,7 @@ class PostsController extends BaseController{
     
         
     public function create() {
-         $this->authoorize();
+         $this->authorize();
         if (!$this -> isPost) {
             $title = $_POST['title'];
             $content = $_POST['description'];
@@ -66,8 +66,29 @@ class PostsController extends BaseController{
         }
     }
     
+    public function addComment($id){
+        if($this->isPost) {
+            $comment = $_POST['comment'];
+            $post = $this->db->getById($id);
+            $userId = $_SESSION['username'];
+            if (strlen($comment) < 2) {
+                $this->addFieldValue('comment', $comment);
+                $this->addValidationError('comment', 'The comment should be at least 2 symbols.');
+                return $this->renderView(__FUNCTION__);
+            }
+            if ($this->db->addComments($comment, $userId, $post['id'])) {
+                $this->addInfoMessage("Comment added successfully.");
+                
+            } else {
+                $this->addErrorMessage("Cannot add comment.");
+            }
+            $this->redirect('posts');
+        }
+        $this->renderView(__FUNCTION__);
+    }
+    
     public function delete($id){
-        $this->authoorize();
+        $this->authorize();
         if(!$this->isPost){
             $title = $_POST['title'];
             $content = $_POST['description'];

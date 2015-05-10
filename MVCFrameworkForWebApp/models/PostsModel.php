@@ -18,7 +18,7 @@ class PostsModel extends BaseModel{
     
         
     public function getAllCommentsByPostId($postId){
-        $statement = self::$db->prepare("SELECT text, post_id FROM comments c INNER JOIN users u ON c.visitor_id = u.id WHERE post_id = ?");
+        $statement = self::$db->prepare("SELECT comment, post_id FROM comments c INNER JOIN users u ON c.visitor_id = u.id WHERE post_id = ?");
         $statement->bind_param("i", $postId);
         $statement->execute();
         $result = $statement->get_result()->fetch_all();
@@ -50,8 +50,20 @@ class PostsModel extends BaseModel{
         if ($title == '' || $content == '') {
             return false;
         }
-        $statement = self::$db->prepare("INSERT INTO posts SET title = ? , content = ?");
+        $statement = self::$db->prepare("INSERT INTO posts SET title = ? , description = ?");
         $statement->bind_param("ss", $title, $content);
+        $statement->execute();
+        return $statement->affected_rows > 0;
+    }
+    
+    public function addComments($comment, $userId, $postId){
+            
+        if ($comment == '') {
+            return false;
+        }
+        $statement = self::$db->prepare(
+            "INSERT INTO comments(id, post_id, visitor_id, comment) VALUES(NULL, ?, ?, ?)");
+        $statement->bind_param("sii", $comment, $userId, $postId);
         $statement->execute();
         return $statement->affected_rows > 0;
     }

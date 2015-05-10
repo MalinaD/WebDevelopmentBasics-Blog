@@ -11,14 +11,14 @@ class AuthorsController extends BaseController{
     
     public function index(){
         //$model = new AuthorsModel();
-        $this->authoorize();
+        $this->authorize();
         $this->authors = $this->db->getAll();
         $this->renderView();
 
     }
     
     public function create(){
-        $this->authoorize();
+        $this->authorize();
         
         if($this->isPost){
             $name = $_POST['author_name'];
@@ -43,7 +43,7 @@ class AuthorsController extends BaseController{
     }
     
     public function delete($id){
-         $this->authoorize();
+         $this->authorize();
         //$this->renderView("index");
        if($this->db->delete($id)){
            $this->addInfoMessage("Author deleted");

@@ -14,7 +14,7 @@
             <br/><br/>
 
             <a href="/posts/showComments/<?= $post['id'] ?>" class="btn btn-default btn-sm active">Show comments</a>   
-            <div class="comments-container"></div>
+            <a href="/posts/addComment" class="btn btn-default btn-sm active">Add comment</a> 
             
             <div class="col-xs-12 col-md-6 col-lg-6">
                 <form class="form-buttons" action="/posts/delete">

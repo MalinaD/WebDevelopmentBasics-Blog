@@ -62,7 +62,7 @@ class AccountController extends BaseController{
     }
         
     public function logout(){
-        $this->authoorize();
+        $this->authorize();
         unset($_SESSION['username']);
         $this->addInfoMessage("Logout successful!");
         $this->redirectToUrl("/");
