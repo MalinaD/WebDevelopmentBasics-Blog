@@ -25,11 +25,19 @@ class PostsModel extends BaseModel{
         return $result;
     }
     
-       public function find($id) {
-        $statement = self::$db->prepare("SELECT * FROM comments WHERE id = ?");
+       public function findCOmmentsByPostId($id) {
+        $statement = self::$db->prepare("SELECT * FROM comments WHERE post_id = ? ");
         $statement->bind_param("i", $id);
         $statement->execute();
-        return $statement->get_result()->fetch_assoc();
+        return $statement->get_result();
+    }
+    
+     public function getById($id) {
+        $statement = self::$db -> prepare("SELECT * FROM posts WHERE id = ? ORDER BY date DESC");            
+        $statement->bind_param("i", $id);
+
+        $statement->execute();
+        return $statement -> get_result()->fetch_assoc();
     }
     
     public function createPost($title, $content) {

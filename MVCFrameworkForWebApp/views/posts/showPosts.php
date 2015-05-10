@@ -7,7 +7,7 @@
                     <strong><?php echo $post[0]; ?></strong>
                     <span class="datePost badge"><strong><?php echo date("Y-m-d H:i", strtotime($post[2])); ?></strong></span>
                     <br/><br/>
-                    <?php echo $post[1]; ?>
+                    <?php echo substr($post[1], 0, 150); echo "..."; ?>
                                                           
                 </li>
             </div>

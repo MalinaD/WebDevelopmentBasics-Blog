@@ -9,13 +9,13 @@
 
 
     <?php foreach($this->posts as $post): ?>
-        <form class="post" action="/posts/index" method="GET">
+        <form class="singlePost" action="/posts/index" method="GET">
             <h2 class="title"><?php echo $post[0] ?></h2>
-            <p class="description col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><?php echo $post[1] ?></p>
+            <p class="description col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><?php echo substr($post[1], 0, 200); echo "..."; ?></p>
             <span class="datePost glyphicon glyphicon-time"><?php echo date("Y-m-d H:i", strtotime($post[2])); ?></span>
             
             <br/><br/>
-            <input type="submit" value="Read more" class="submit-button btn btn-default btn-sm active"/>
+            <a href="/posts/singlePost/<?= $post[3] ?>" class="submit-button btn btn-default btn-sm active">Read more</a>
             <a href="/posts/showComments/<?php $post[3] ?>" class="btn btn-default btn-sm active">Show comments</a>     
             <div class="col-xs-12 col-md-6 col-lg-6">
                 <form class="form-buttons" action="/posts/delete">
