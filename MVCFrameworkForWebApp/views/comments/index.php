@@ -1,6 +1,5 @@
 <div class="comments-container">
     <br/><br/>
-    <?php $post = $this -> post ?>
 
     <ul class="list-group">
         <?php foreach ($this->comments as $comment): ?>
@@ -10,9 +9,9 @@
             <span class="badge"><?php echo $comment['date']; ?></span>
                
             <?php if ($this->isLoggedIn) : ?>
-              <br <form action="/posts/deleteComment" style="float: right;">
-                               <a href="/posts/deleteComment/<?= $post['id'] ?>" class="btn btn-default btn-sm active">Delete</a>
-                           </form>
+              <br <form action="/posts/delete/<?= $comment['post_id']?>" style="float: right;">
+                     <a href="/posts/deleteComment/<?= $comment['id'] ?>" class="btn btn-default btn-sm active">Delete</a>
+                  </form>
              <?php endif; ?>
         </li>
 
@@ -22,3 +21,4 @@
     <a href="/posts/addComment" class="btn btn-default btn-sm active">Add comment</a> 
 
 </div>
+

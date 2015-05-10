@@ -3,7 +3,7 @@
 <div class="comments-container container">
     <div class="formContainer">
         <?php if($this->isLoggedIn): ?>
-            <form action="/posts/addComment/<?=$post['id'] ?>" method="POST">
+            <form action="/comments/addComment" method="POST">
                 <h1>Add comment</h1>
                 <textarea placeholder="Your comment here" name="comment"
                        value="<?php echo $this->getFieldValue('comment') ?>"></textarea>

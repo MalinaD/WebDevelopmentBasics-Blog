@@ -29,8 +29,9 @@ class PostsController extends BaseController{
          $this->renderView(__FUNCTION__);
     }
 
-    public function showPosts(){
+    public function showPosts($id){
         $this->posts = $this->db->getAll();
+        $this -> comments = $this -> db -> getAllCommentsByPostId($id);
         $this->renderView(__FUNCTION__, false);
     }
     
@@ -50,42 +51,23 @@ class PostsController extends BaseController{
             $content = $_POST['description'];
 
             if (strlen($content) < 5) {
-                $this->addFieldValue('content', $content);
-                $this->addValidationError('content', 'The content should be at least 5 symbols');
+                $this->addFieldValue('description', $content);
+                $this->addValidationError('description', 'The content should be at least 5 symbols');
                 return $this->renderView(__FUNCTION__);
             }
             
             if ($this -> db ->createPost($title, $content)) {
                 $this -> addInfoMessage ("Post created successfully.");
-                $this -> redirect('posts');
+                
             } else {
                 $this -> addErrorMessage("Cannot create post.");
             }
-            
-             return $this->renderView(__FUNCTION__);
+            $this -> redirect('posts');
         }
+             return $this->renderView(__FUNCTION__);
+        
     }
     
-    public function addComment($id){
-        if($this->isPost) {
-            $comment = $_POST['comment'];
-            $post = $this->db->getById($id);
-            $userId = $_SESSION['username'];
-            if (strlen($comment) < 2) {
-                $this->addFieldValue('comment', $comment);
-                $this->addValidationError('comment', 'The comment should be at least 2 symbols.');
-                return $this->renderView(__FUNCTION__);
-            }
-            if ($this->db->addComments($comment, $userId, $post['id'])) {
-                $this->addInfoMessage("Comment added successfully.");
-                
-            } else {
-                $this->addErrorMessage("Cannot add comment.");
-            }
-            $this->redirect('posts');
-        }
-        $this->renderView(__FUNCTION__);
-    }
     
     public function delete($id){
         $this->authorize();
@@ -108,4 +90,6 @@ class PostsController extends BaseController{
         }
            
     }
+
+    
 }

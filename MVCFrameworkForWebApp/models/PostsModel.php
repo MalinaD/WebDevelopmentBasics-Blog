@@ -50,20 +50,20 @@ class PostsModel extends BaseModel{
         if ($title == '' || $content == '') {
             return false;
         }
-        $statement = self::$db->prepare("INSERT INTO posts SET title = ? , description = ?");
+        $statement = self::$db->prepare("INSERT INTO posts VALUES(NULL,?, ?, now(), NULL, NULL)");
         $statement->bind_param("ss", $title, $content);
         $statement->execute();
         return $statement->affected_rows > 0;
     }
     
-    public function addComments($comment, $userId, $postId){
+    public function addComments($comment, $user, $postId){
             
         if ($comment == '') {
             return false;
         }
         $statement = self::$db->prepare(
-            "INSERT INTO comments(id, post_id, visitor_id, comment) VALUES(NULL, ?, ?, ?)");
-        $statement->bind_param("sii", $comment, $userId, $postId);
+            "INSERT INTO comments(id, post_id, username, comment,date) VALUES(NULL, ?, ?, ?, now())");
+        $statement->bind_param("ssi", $comment, $user, $postId);
         $statement->execute();
         return $statement->affected_rows > 0;
     }
@@ -74,5 +74,14 @@ class PostsModel extends BaseModel{
         $statement->execute();
         return $statement->affected_rows > 0;
         
+    }
+    
+    public function deleteComments($id)
+    {
+        $statement = self::$db->prepare(
+            "DELETE FROM comments WHERE id = ?");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        return $statement->affected_rows > 0;
     }
 }
